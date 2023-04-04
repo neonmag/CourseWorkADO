@@ -1,0 +1,109 @@
+﻿<Window x:Class="CourseWork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="800" Width="1500">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Товари" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+        <Button x:Name="AddProduct" Content="Add Product" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" Click="AddProduct_Click"/>
+        <TextBlock Grid.Column="1" Text="Продавці" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+        <Button Grid.Column="1" x:Name="AddSeller" Content="Add Seller" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" Click="AddSeller_Click"/>
+        <ListView x:Name="ViewSellers" ItemsSource="{Binding sellers}" Grid.Row="1" Grid.Column="1" Height="300" MouseDoubleClick="ViewSellers_MouseDoubleClick"  ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Top"
+                  ScrollViewer.CanContentScroll="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Header="Id"
+                        DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn
+                        Header="Name"
+                        DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn
+                        Header="Surname"
+                        DisplayMemberBinding="{Binding Path=Surname}"/>
+                    <GridViewColumn
+                        Header="Phone"
+                        DisplayMemberBinding="{Binding Path=Phone}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="ViewProducts" ItemsSource="{Binding products}" Grid.Row="1" Height="300" MouseDoubleClick="ViewProducts_MouseDoubleClick" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Top"
+                  ScrollViewer.CanContentScroll="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Header="Id"
+                        DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn
+                        Header="Name"
+                        DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn
+                        Header="Surname"
+                        DisplayMemberBinding="{Binding Path=Amount}"/>
+                    <GridViewColumn
+                        Header="Price"
+                        DisplayMemberBinding="{Binding Path=Price}"/>
+                    <GridViewColumn
+                        Header="Seller"
+                        DisplayMemberBinding="{Binding Path=Seller}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Text="Користувачі" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+        <Button Grid.Column="0" Grid.Row="2" x:Name="AddUser" Content="Add User" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" Click="AddUser_Click"/>
+        <ListView x:Name="ViewUsers" ItemsSource="{Binding users}" Grid.Row="3" Height="300" MouseDoubleClick="ViewUsers_MouseDoubleClick"  ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Top"
+                  ScrollViewer.CanContentScroll="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Header="Id"
+                        DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn
+                        Header="Name"
+                        DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn
+                        Header="Surname"
+                        DisplayMemberBinding="{Binding Path=Surname}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Text="Продажі" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+        <Button Grid.Column="1" Grid.Row="2" x:Name="AddSale" Content="Add Sale" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" Click="AddSale_Click"/>
+        <ListView x:Name="ViewSales" ItemsSource="{Binding sales}" Grid.Row="3" Grid.Column="1" Height="300" MouseDoubleClick="ViewSales_MouseDoubleClick"  ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Top"
+                  ScrollViewer.CanContentScroll="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Header="Id"
+                        DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn
+                        Header="Name"
+                        DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn
+                        Header="Seller"
+                        DisplayMemberBinding="{Binding Path=Seller}"/>
+                    <GridViewColumn
+                        Header="Buyer"
+                        DisplayMemberBinding="{Binding Path=Buyer}"/>
+                    <GridViewColumn
+                        Header="Product"
+                        DisplayMemberBinding="{Binding Path=Product}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
